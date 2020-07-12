@@ -33,5 +33,5 @@ typings/
 *.tgz
 .env
 webpack.config.js
-# add an enviroment.ts and export API_KEY from open weather
-app/enviroment.ts
+# add an environment.ts and export API_KEY from open weather
+app/environment.ts

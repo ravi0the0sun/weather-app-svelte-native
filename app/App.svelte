@@ -11,8 +11,6 @@
     import { API_KEY } from './environment';
     import WeatherInfo from './components/WeatherInfo.svelte';
 
-    const WEATHER_API_KEY = API_KEY;
-
     let show = false;
 
     const BASE_URL_ADDRESS = 'https://api.openweathermap.org/data/2.5/weather?';
@@ -27,7 +25,6 @@
             const location = await GeoLocation.getCurrentLocation({});
             $longitude = location.longitude;
             $latitude = location.latitude; 
-            $currentweather = await getWeather();
             show = true;
         } catch (err) {
             console.log(err);
