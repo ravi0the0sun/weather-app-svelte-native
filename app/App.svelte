@@ -8,10 +8,7 @@
         unitSystem,
         currentweather,
     } from './stores';
-    import { API_KEY } from './environment'
     import WeatherInfo from './components/WeatherInfo.svelte'
-
-    const WEATHER_API_KEY = API_KEY;
 
     let show = false;
 
@@ -27,17 +24,10 @@
             const location = await GeoLocation.getCurrentLocation({});
             $longitude = location.longitude;
             $latitude = location.latitude; 
-            $currentweather = await getWeather();
             show = true;
         } catch (err) {
             console.log(err);
         }
-    }
-
-    async function getWeather() {
-        return await fetch(`${BASE_URL_ADDRESS}lat=${$latitude}&lon=${$longitude}&units=${$unitSystem}&appid=${WEATHER_API_KEY}`)
-        .then(res => res.json())
-        .finally(data => data);
     }
 
     onMount(getAss);
