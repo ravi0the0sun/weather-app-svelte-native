@@ -8,8 +8,8 @@
         unitSystem,
         currentweather,
     } from './stores';
-    import { API_KEY } from './enviroment'
-    import WeatherInfo from './components/WeatherInfo.svelte'
+    import { API_KEY } from './environment';
+    import WeatherInfo from './components/WeatherInfo.svelte';
 
     const WEATHER_API_KEY = API_KEY;
 
@@ -39,7 +39,6 @@
         .then(res => res.json())
         .finally(data => data);
     }
-
     onMount(getAss);
 </script>
 
