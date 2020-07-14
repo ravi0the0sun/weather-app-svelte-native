@@ -11,3 +11,4 @@ tns run android
 # or
 tns run ios
 ```
+### DO NOT USE THIS FOR PRODUCTION AS SVELTE-NATIVE STILL HAS ITS OWN ISSUES :smile:
