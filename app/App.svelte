@@ -41,7 +41,7 @@
 </script>
 
 <page actionBarHidden="true" class="main">
-    <gridLayout horizontalAlignment="center" verticalAlignment="center" textWrap="true">
+    <gridLayout horizontalAlignment="center" verticalAlignment="center" textWrap="false">
         {#if show}
             <WeatherInfo />
         {:else}
@@ -54,5 +54,4 @@
     .main {
         background-image: linear-gradient(to bottom right, #0077ff, #19ffec);
     }
-
 </style>

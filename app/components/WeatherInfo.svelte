@@ -14,23 +14,20 @@
 
 
 <image class="img-center" src="{iconUrl}" />
-<gridLayout class="weather-info info" >
-    <label class="weather-temp" text="{temp}°" />
-    <label class="weather-des" text="{description}"/>
-    <label class="weather-main" text={main}/>
-</gridLayout>
+<label class="weather-temp" text="{temp}°" />
+<label class="weather-des" text="{description}"/>
+<label class="weather-main" text={main}/>
 
 
 <style>
-    .weather-info {
-        align-items: center;
-    }
     .img-center {
-        width: 500px;
-        height: 500px;
-        top: -400px;
+        position: absolute;
+        width: 200px;
+        height: 200px;
+        top: 20px;
     }
     .weather-temp {
+        position:absolute;
         font-size: 40px;
         color: #ffffff;
     }
