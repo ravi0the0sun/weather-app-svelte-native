@@ -15,7 +15,7 @@
 
     const BASE_URL_ADDRESS = 'https://api.openweathermap.org/data/2.5/weather?';
 
-    async function getAss() {
+    async function getLocation() {
         try {
             const request = await GeoLocation.enableLocationRequest(true);
             const response = await GeoLocation.isEnabled();
@@ -37,10 +37,10 @@
         .then(res => res.json())
         .finally(data => data);
     }
-    onMount(getAss);
+    onMount(getLocation);
 </script>
 
-<page actionBarHidden="true">
+<page actionBarHidden="true" class="main">
     <gridLayout horizontalAlignment="center" verticalAlignment="center" textWrap="true">
         {#if show}
             <WeatherInfo />
@@ -51,5 +51,8 @@
 </page>
 
 <style>
+    .main {
+        background-image: linear-gradient(to bottom right, #0077ff, #19ffec);
+    }
 
 </style>
