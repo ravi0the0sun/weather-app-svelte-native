@@ -25,6 +25,7 @@
             const location = await GeoLocation.getCurrentLocation({});
             $longitude = location.longitude;
             $latitude = location.latitude; 
+            $currentweather = await getWeather();
             show = true;
         } catch (err) {
             console.log(err);
@@ -32,7 +33,7 @@
     }
 
     async function getWeather() {
-        return await fetch(`${BASE_URL_ADDRESS}lat=${$latitude}&lon=${$longitude}&units=${$unitSystem}&appid=${WEATHER_API_KEY}`)
+        return await fetch(`${BASE_URL_ADDRESS}lat=${$latitude}&lon=${$longitude}&units=${$unitSystem}&appid=${API_KEY}`)
         .then(res => res.json())
         .finally(data => data);
     }
@@ -42,7 +43,9 @@
 <page actionBarHidden="true">
     <gridLayout horizontalAlignment="center" verticalAlignment="center" textWrap="true">
         {#if show}
-            <WeatherInfo currentweather={$currentweather} />
+            <WeatherInfo />
+        {:else}
+            <label text="{$latitude}, {$longitude}" />
         {/if}
     </gridLayout>
 </page>
