@@ -41,17 +41,19 @@
 </script>
 
 <page actionBarHidden="true" class="main">
-    <gridLayout horizontalAlignment="center" verticalAlignment="center" textWrap="false">
+    <gridLayout horizontalAlignment="center" verticalAlignment="center" textWrap="true">
         {#if show}
             <WeatherInfo />
         {:else}
-            <label text="{$latitude}, {$longitude}" />
+            <label text="Stop Looking at me UwU!!!" />
         {/if}
     </gridLayout>
 </page>
 
 <style>
     .main {
+        font-size: 20px;
+        color: #ffffff;
         background-image: linear-gradient(to bottom right, #0077ff, #19ffec);
     }
 </style>

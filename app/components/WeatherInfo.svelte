@@ -24,7 +24,7 @@
         position: absolute;
         width: 200px;
         height: 200px;
-        top: 20px;
+        top: 10%;
     }
     .weather-temp {
         position:absolute;
