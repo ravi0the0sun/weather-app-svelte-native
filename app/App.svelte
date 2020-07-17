@@ -8,8 +8,10 @@
         unitSystem,
         currentweather,
     } from './stores';
+
     import { API_KEY } from './environment';
     import WeatherInfo from './components/WeatherInfo.svelte';
+    import Loading from './components/Loading.svelte'
 
     let show = false;
 
@@ -41,13 +43,12 @@
 </script>
 
 <page actionBarHidden="true" class="main">
-    <gridLayout horizontalAlignment="center" verticalAlignment="center" textWrap="true">
         {#if show}
             <WeatherInfo />
         {:else}
-            <label text="Stop Looking at me UwU!!!" />
+            <activityIndicator busy="true" color="#ffe9b0" width="100" height="100"></activityIndicator>
         {/if}
-    </gridLayout>
+        
 </page>
 
 <style>
