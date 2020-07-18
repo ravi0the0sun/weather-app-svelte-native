@@ -11,38 +11,37 @@
     const iconUrl = `https://openweathermap.org/img/wn/${icon}@4x.png`;
 
 </script>
-<gridLayout horizontalAlignment="center" verticalAlignment="center" textWrap="true">
-    <image col="0" class="img-center" src="{iconUrl}" />
-    <label col="1" class="weather-temp" text="{temp}°" />
-    <label col="2" class="weather-des" text="{description}"/>
-    <label col="3" class="weather-main" text={main}/>
+<gridLayout columns="*" rows="auto,auto,auto,auto">
+    <image col="0" row="0" class="img-center" src="{iconUrl}" />
+    <label col="0" row="1" class="weather-temp" text="{temp}°" />
+    <label col="0" row="2" class="weather-des" text="{description}"/>
+    <label col="0" row="3" class="weather-main" text={main}/>
 </gridLayout>
 
 
 <style>
     .img-center {
-        background-color: blue;
+        text-align: center;
         position: absolute;
-        width: 200px;
-        height: 200px;
-        top: 10%;
+        width: 300px;
+        height: 300px;
     }
     .weather-temp {
-        background-color: red;
+        position: absolute;
+        text-align: center;
         position:absolute;
         font-size: 40px;
-        color: #ffffff;
     }
     .weather-des {
-        background-color: pink;
+        position: absolute;
+        text-align: center;
         top:100px;
-        color:#ffffff;
         text-transform: capitalize; 
     }
     .weather-main {
-        background-color: yellow;
-        font-size: 20;
-        color: #ffffff;
+        position: absolute;
+        text-align: center;
+        font-size: 20px;
         font-weight: 500px;
         margin-top: 10px;
     }
