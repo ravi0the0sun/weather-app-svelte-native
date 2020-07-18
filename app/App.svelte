@@ -43,12 +43,13 @@
 </script>
 
 <page actionBarHidden="true" class="main">
+    <gridLayout horizontalAlignment="center" verticalAlignment="center" textWrap="true">
         {#if show}
             <WeatherInfo />
         {:else}
-            <activityIndicator busy="true" color="#ffe9b0" width="100" height="100"></activityIndicator>
+            <activityIndicator busy="true" color="#ffffff" width="100" height="100"></activityIndicator>
         {/if}
-        
+    </gridLayout>
 </page>
 
 <style>
