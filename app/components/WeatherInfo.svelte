@@ -1,5 +1,6 @@
 <script>
-    import { currentweather, weatherIconId, unitSystem } from '../stores'
+    import { currentweather, unitSystem } from '../stores'
+    import WeatherIcon from './WeatherIcon.svelte';
 
     const {
         main: { temp },
@@ -7,43 +8,38 @@
         name,
     } = $currentweather;
     const { icon, main, description } = details;
-
+    const className = main.toLowerCase();
     const iconUrl = `https://openweathermap.org/img/wn/${icon}@4x.png`;
 
 </script>
-<gridLayout columns="*" rows="auto,auto,auto,auto,auto">
-    <image col="0" row="0" class="img-center" src="{iconUrl}" />
-    <label col="0" row="1" class="weather-temp" text="{temp}°{$unitSystem==='metric'? 'C' : 'F'}" />
-    <label col="0" row="2" class="weather-des" text="{description}"/>
-    <label col="0" row="3" class="weather-main" text="{main}"/>
-    <label col="0" row="4" class="weather-main" text="{$weatherIconId}"/>
+<gridLayout columns="*" rows="auto,auto,auto,auto,auto" class="weather-info">
+    <label class="weather-name" >
+        <formattedString>
+            <span class="fas" text="&#xf3c5;" />
+            <span text=" {name}" />
+        </formattedString>
+    </label>
+    <WeatherIcon col="0" row="1" />
+    <label col="0" row="2" class="weather-temp" text="{temp}°{$unitSystem==='metric'? 'C' : 'F'}" />
+    <label col="0" row="3" class="weather-info" text="{description}"/>
+    <label col="0" row="4" class="weather-main" text="{main}"/>
 </gridLayout>
 
 
 <style>
-    .img-center {
-        text-align: center;
-        position: absolute;
-        width: 300px;
-        height: 300px;
-    }
-    .weather-temp {
-        position: absolute;
-        text-align: center;
-        position:absolute;
-        font-size: 40px;
-    }
-    .weather-des {
-        position: absolute;
-        text-align: center;
-        top:100px;
-        text-transform: capitalize; 
-    }
-    .weather-main {
-        position: absolute;
+    .weather-info {
         text-align: center;
         font-size: 20px;
-        font-weight: 500px;
+        text-transform: capitalize;
+    }
+    .weather-temp {
+        font-size: 40px;
+    }
+    .weather-name {
+        font-size: 13px;
+    }
+    .weather-main {
+        font-weight: 500;
         margin-top: 10px;
     }
 </style>
