@@ -1,13 +1,15 @@
 <script>
 
     import { draw } from 'svelte/transition';
-    import { weatherIconId, weatherId } from '../stores';
+    import { currentweather } from '../stores';
 
     export let col;
     export let row;
 
-    const iconId = $weatherIconId;
-    const id = $weatherId;
+    const {
+        weather: [details],
+    } = $currentweather;
+    const { id, icon } = details;
 
 </script>
 
@@ -24,15 +26,15 @@
 {:else if (id < 800)}
     <label col="{col}" row="{row}" class="fas image" text="&#xf75f;"/>
 {:else if (id === 800)}
-    {#if (iconId == '01d')} 
+    {#if (icon == '01d')} 
         <label col="{col}" row="{row}" class="fas image" text="&#xf185;"/>
     {:else}
         <label col="{col}" row="{row}" class="fas image" text="&#xf186;"/>
     {/if}
 {:else if (id < 900)}
-    {#if (iconId == '02d')} 
+    {#if (icon == '02d')} 
         <label col="{col}" row="{row}" class="fas image" text="&#xf6c4;"/>
-    {:else if (iconId == '02n')}
+    {:else if (icon == '02n')}
         <label col="{col}" row="{row}" class="fas image" text="&#xf6c3;"/>
     {:else}
         <label col="{col}" row="{row}" class="fas image" text="&#xf0c2;"/>
