@@ -11,7 +11,6 @@
 
     import { API_KEY } from './environment';
     import WeatherInfo from './components/WeatherInfo.svelte';
-    import Loading from './components/Loading.svelte'
 
     let show = false;
 
@@ -47,7 +46,7 @@
         {#if show}
             <WeatherInfo />
         {:else}
-            <activityIndicator busy="true" color="#ffffff" width="100" height="100"></activityIndicator>
+            <activityIndicator busy="{!show}" color="#ffffff" width="100" height="100"></activityIndicator>
         {/if}
     </gridLayout>
 </page>
