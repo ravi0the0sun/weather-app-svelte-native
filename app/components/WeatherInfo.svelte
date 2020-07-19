@@ -1,5 +1,5 @@
 <script>
-    import { currentweather } from '../stores'
+    import { currentweather, weatherIconId, unitSystem } from '../stores'
 
     const {
         main: { temp },
@@ -11,11 +11,12 @@
     const iconUrl = `https://openweathermap.org/img/wn/${icon}@4x.png`;
 
 </script>
-<gridLayout columns="*" rows="auto,auto,auto,auto">
+<gridLayout columns="*" rows="auto,auto,auto,auto,auto">
     <image col="0" row="0" class="img-center" src="{iconUrl}" />
-    <label col="0" row="1" class="weather-temp" text="{temp}°" />
+    <label col="0" row="1" class="weather-temp" text="{temp}°{$unitSystem==='metric'? 'C' : 'F'}" />
     <label col="0" row="2" class="weather-des" text="{description}"/>
-    <label col="0" row="3" class="weather-main" text={main}/>
+    <label col="0" row="3" class="weather-main" text="{main}"/>
+    <label col="0" row="4" class="weather-main" text="{$weatherIconId}"/>
 </gridLayout>
 
 
