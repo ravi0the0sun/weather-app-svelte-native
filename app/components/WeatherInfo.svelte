@@ -7,9 +7,7 @@
         weather: [details],
         name,
     } = $currentweather;
-    const { icon, main, description } = details;
-    const className = main.toLowerCase();
-    const iconUrl = `https://openweathermap.org/img/wn/${icon}@4x.png`;
+    const { main, description } = details;
 
 </script>
 <gridLayout columns="*" rows="auto,auto,auto,auto,auto" class="weather-info">
