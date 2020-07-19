@@ -5,11 +5,7 @@ export const longitude = writable(0);
 export const unitSystem = writable("metric");
 
 export const currentweather = writable({
-    weather: [
-        {
-            icon: "01d",
-        },
-    ],
+    weather: [],
 });
 export const weatherIconId = derived(currentweather, ($currentweather) => {
     const {
@@ -17,4 +13,11 @@ export const weatherIconId = derived(currentweather, ($currentweather) => {
     } = $currentweather;
     const { icon } = details;
     return icon;
+});
+export const weatherId = derived(currentweather, ($currentweather) => {
+    const {
+        weather: [details],
+    } = $currentweather;
+    const { id } = details;
+    return id;
 });
