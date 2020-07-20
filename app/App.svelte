@@ -11,12 +11,8 @@
     } from './stores';
     import { getWeather } from './api';
 
-    import { API_KEY } from './environment';
     import WeatherInfo from './components/WeatherInfo.svelte';
     import ActionBar from './components/ActionBar.svelte';
-
-
-    const BASE_URL_ADDRESS = 'https://api.openweathermap.org/data/2.5/weather?';
 
     async function getLocation() {
         try {
