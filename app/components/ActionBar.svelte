@@ -19,6 +19,9 @@
             $loading = false;
         } else {
             $loading = true;
+            if ($currentweather.main.temp < 77) {
+                $currentweather = {main: {temp: 0}};
+            };
             $unitSystem = 'metric';
             $currentweather = await getWeather($latitude, $longitude, $unitSystem);
             $loading = false;
