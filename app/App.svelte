@@ -7,12 +7,14 @@
         latitude,
         unitSystem,
         currentweather,
+        loading
     } from './stores';
+    import { getWeather } from './api';
 
     import { API_KEY } from './environment';
     import WeatherInfo from './components/WeatherInfo.svelte';
+    import ActionBar from './components/ActionBar.svelte';
 
-    let show = false;
 
     const BASE_URL_ADDRESS = 'https://api.openweathermap.org/data/2.5/weather?';
 
@@ -26,27 +28,25 @@
             const location = await GeoLocation.getCurrentLocation({});
             $longitude = location.longitude;
             $latitude = location.latitude; 
-            $currentweather = await getWeather();
-            show = true;
+            $currentweather = await getWeather($latitude, $longitude, $unitSystem);
+            $loading = false;
         } catch (err) {
             console.log(err);
         }
     }
 
-    async function getWeather() {
-        return await fetch(`${BASE_URL_ADDRESS}lat=${$latitude}&lon=${$longitude}&units=${$unitSystem}&appid=${API_KEY}`)
-        .then(res => res.json())
-        .finally(data => data);
-    }
     onMount(getLocation);
 </script>
 
-<page actionBarHidden="true" class="main">
-    <gridLayout horizontalAlignment="center" verticalAlignment="center" textWrap="true">
-        {#if show}
-            <WeatherInfo />
+<page class="main">
+    <ActionBar getWeather ={getWeather}/>
+    <gridLayout col="auto" row="auto" horizontalAlignment="center" verticalAlignment="center" textWrap="true">
+        {#if !$loading}
+            <WeatherInfo col="0" row="0" />
         {:else}
-            <activityIndicator busy="{!show}" color="#ffffff" width="100" height="100"></activityIndicator>
+            <activityIndicator 
+                busy="{$loading}" color="#ffffff" width="100" height="100" col="0" row="0" >
+            </activityIndicator>
         {/if}
     </gridLayout>
 </page>

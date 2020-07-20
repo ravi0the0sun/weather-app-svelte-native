@@ -6,45 +6,54 @@
     export let col;
     export let row;
 
+    let iconUnicode;
+
     const {
         weather: [details],
     } = $currentweather;
-    let { id, icon } = details;
+    const { id, icon } = details;
+
+    if (id > 199 && id < 300) {
+        iconUnicode = '\uf0e7';
+    } else if (id < 400) {
+        iconUnicode = '\uf73d';
+    } else if (id > 501 && id < 505) {
+        iconUnicode = '\uf743';
+    } else if (id > 505 && id < 532) {
+        iconUnicode = '\uf740'
+    } else if (id === 500 || id < 700) {
+        iconUnicode = '\uf2dc';
+    } else if (id < 800) {
+        iconUnicode = '\uf75f';
+    } else if (id === 800) {
+        if (icon == '01d') {
+            iconUnicode = '\uf185';
+        } else {
+            iconUnicode = '\uf186';
+        }
+    } else if (id < 900) {
+        if (icon == '02d') {
+            iconUnicode = '\uf6c4';
+        } else if (icon == '02n') {
+            iconUnicode = '\uf6c3';
+        } else {
+            iconUnicode = '\uf0c2';
+        }
+    }
 
 </script>
 
-{#if (id > 199 && id < 300)}
-    <label col="{col}" row="{row}" class="fas image" text="&#xf0e7;"/>
-{:else if (id < 400)}
-    <label col="{col}" row="{row}" class="fas image" text="&#xf73d;"/>
-{:else if (id > 501 && id < 505)}
-    <label col="{col}" row="{row}" class="fas image" text="&#xf743;"/>
-{:else if (id > 505 && id < 532)}
-    <label col="{col}" row="{row}" class="fas image" text="&#xf740;"/>
-{:else if (id === 500 || id < 700)}
-    <label col="{col}" row="{row}" class="fas image" text="&#xf2dc;"/>
-{:else if (id < 800)}
-    <label col="{col}" row="{row}" class="fas image" text="&#xf75f;"/>
-{:else if (id === 800)}
-    {#if (icon == '01d')} 
-        <label col="{col}" row="{row}" class="fas image" text="&#xf185;"/>
-    {:else}
-        <label col="{col}" row="{row}" class="fas image" text="&#xf186;"/>
-    {/if}
-{:else if (id < 900)}
-    {#if (icon == '02d')} 
-        <label col="{col}" row="{row}" class="fas image" text="&#xf6c4;"/>
-    {:else if (icon == '02n')}
-        <label col="{col}" row="{row}" class="fas image" text="&#xf6c3;"/>
-    {:else}
-        <label col="{col}" row="{row}" class="fas image" text="&#xf0c2;"/>
-    {/if}
+{#if iconUnicode}
+    <label col="{col}" row="{row}" class="fas image" text="{iconUnicode}"/>
 {:else}
-    <activityIndicator col="{col}" row="{row}" busy="{true}" color="#ffffff" width="50" height="50"></activityIndicator>
+    <activityIndicator 
+        busy="{true}" color="#ffffff" width="50" height="50" col="{col}" row="{row}" >
+    </activityIndicator>
 {/if}
+
+
 <style>
     .image {
-        margin-top: 130px;
         font-size: 80px;
     }
 </style>
