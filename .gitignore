@@ -34,4 +34,4 @@ typings/
 .env
 webpack.config.js
 # add an environment.ts and export API_KEY from open weather
-app/environment.ts
+environment.ts

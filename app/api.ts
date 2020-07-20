@@ -1,4 +1,4 @@
-import { API_KEY } from './environment';
+import { API_KEY } from '../environment';
     
 const BASE_URL_ADDRESS = 'https://api.openweathermap.org/data/2.5/weather?';
 
