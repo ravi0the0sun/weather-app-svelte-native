@@ -10,17 +10,24 @@
     const { main, description } = details;
 
 </script>
+
 <gridLayout columns="*" rows="auto,auto,auto,auto,auto" class="weather-info">
+
     <label class="weather-name" >
         <formattedString>
             <span class="fas" text="&#xf3c5;" />
             <span text=" {name}" />
         </formattedString>
     </label>
+
     <WeatherIcon col="0" row="1" />
+
     <label col="0" row="2" class="weather-temp" text="{temp}°{$unitSystem==='metric'? 'C' : 'F'}" />
+
     <label col="0" row="3" class="weather-info" text="{description}"/>
+
     <label col="0" row="4" class="weather-main" text="{main}"/>
+
 </gridLayout>
 
 
@@ -35,9 +42,9 @@
     }
     .weather-name {
         font-size: 13px;
+        margin-bottom: 10px;
     }
     .weather-main {
         font-weight: 500;
-        margin-top: 10px;
     }
 </style>
