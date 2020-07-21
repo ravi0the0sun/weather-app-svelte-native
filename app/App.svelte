@@ -41,26 +41,30 @@
 
 <page class="main">
     <ActionBar getWeather={getWeather}/>
-    <stackLayout orientation="vertical" horizontalAlignment="center" verticalAlignment="center" textWrap="true">
+    
         {#if !$loading}
-            <WeatherInfo />
-            <WeatherCard />
-            <!--<WeatherDetails />-->
+            <stackLayout orientation="vertical" textWrap="true">
+                <WeatherInfo />
+                <WeatherDetails />
+            </stackLayout>
         {:else if ($error)}
+        <stackLayout orientation="vertical" textWrap="true" horizontalAlignment="center" verticalAlignment="center" >
             <ErrorBlock />
+        </stackLayout>
         {:else}
-            <activityIndicator 
-                busy="{$loading}" color="#ffffff" width="100" height="100" col="0" row="0" >
-            </activityIndicator>
+            <stackLayout orientation="vertical" textWrap="true" horizontalAlignment="center" verticalAlignment="center" >
+                <activityIndicator 
+                    busy="{$loading}" color="#ffffff" width="100" height="100" col="0" row="0"  >
+                </activityIndicator>
+            </stackLayout>
         {/if}
-    </stackLayout>
 </page>
 
 <style>
     .main {
         font-size: 20px;
         color: #ffffff;
-        background-image: linear-gradient(to bottom right, #0077ff, #19ffec);
+        background-image: linear-gradient(to bottom right, #19ffec, #0077ff);
     }
     
 </style>

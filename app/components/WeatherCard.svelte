@@ -2,14 +2,11 @@
     import { currentweather } from '../stores';
     let className;
 
-    // export let icon = '\uf2c9';
-    // export let heading = 'Feels Like';
-    let icon = '\uf2c9';
-    let { main: { feels_like } } = $currentweather;
-    let heading = 'Feels Like';
-    // export let data;
-    // export let location; 
-    // let { col, row } = location;
+    export let icon;
+    export let heading;
+    export let data;
+    export let location; 
+    let { col, row } = location;
     function animation() {
         className = '';
         setTimeout(() => {
@@ -18,19 +15,23 @@
     }
 </script>
 
-<gridLayout columns="*,*" rows="auto,auto,auto" class="card">
-    <label row="0" col="0" rowSpan="2" class="fas icon view {className}" text="{icon}" on:tap="{animation}"/>
+<gridLayout columns="50,*" rows="auto,auto,auto" class="card" col="{col}" row="{row}">
+    <label row="0" col="0" rowSpan="2" class="fas icon {className}" text="{icon}" on:tap="{animation}"/>
     <label row="0" col="1" class="heading" text="{heading}"/>
-    <label row="1" col="1" text="{feels_like}" class="feel"/>
+    <label row="1" col="1" text="{data}" class="feel"/>
 </gridLayout>
 
 <style>
     .card {
-        margin-top: 30px;
+        margin-top: 50px;
         text-align: center;
+        font-size: 15px;
+        
     }
     .icon {
-        font-size: 40px;
+        margin-top: 30px;
+        margin-bottom: 20px;
+        font-size: 30px;
     }
     .heading {
         font-weight: 500;

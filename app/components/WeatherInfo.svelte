@@ -24,7 +24,7 @@
 
     <label col="0" row="2" class="weather-temp" text="{temp}°{$unitSystem==='metric'? 'C' : 'F'}" />
 
-    <label col="0" row="3" class="weather-info" text="{description}"/>
+    <label col="0" row="3" class="weather-des" text="{description}"/>
 
     <label col="0" row="4" class="weather-main" text="{main}"/>
 
@@ -33,6 +33,8 @@
 
 <style>
     .weather-info {
+        padding-top: 490px;
+        padding-bottom: 260px;
         text-align: center;
         font-size: 20px;
         text-transform: capitalize;
@@ -42,7 +44,9 @@
     }
     .weather-name {
         font-size: 13px;
-        margin-bottom: 10px;
+    }
+    .weather-des {
+        text-transform: capitalize;
     }
     .weather-main {
         font-weight: 500;
