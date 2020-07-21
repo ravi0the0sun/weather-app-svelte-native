@@ -5,6 +5,8 @@ export const longitude = writable(0);
 export const unitSystem = writable("metric");
 
 export const currentweather = writable({ main: {temp: 0}});
+export const error = writable(false);
+
 
 export const loading = writable(true);
 export const iconUnicode = derived([currentweather, unitSystem], ([$currentweather, $unitSystem]) =>{

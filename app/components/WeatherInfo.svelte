@@ -46,5 +46,6 @@
     }
     .weather-main {
         font-weight: 500;
+        color: rgba(255, 255, 255, .9);
     }
 </style>

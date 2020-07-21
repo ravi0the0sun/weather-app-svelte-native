@@ -7,6 +7,7 @@
     export let row;
 
     let iconUnicode;
+    let className;
 
     const {
         weather: [details],
@@ -40,11 +41,17 @@
             iconUnicode = '\uf0c2';
         }
     }
+    function animation() {
+        className = '';
+        setTimeout(() => {
+            className = 'view';
+        }, 1);
+    }
 
 </script>
 
 {#if iconUnicode}
-    <label col="{col}" row="{row}" class="fas image" text="{iconUnicode}"/>
+    <label col="{col}" row="{row}" class="fas image {className}" text="{iconUnicode}" on:tap="{animation}"/>
 {:else}
     <activityIndicator 
         busy="{true}" color="#ffffff" width="50" height="50" col="{col}" row="{row}" >
@@ -55,6 +62,15 @@
 <style>
     .image {
         font-size: 80px;
+    }
+
+    .view {
+        animation-name: rotate;
+        animation-duration: 1s;
+    }
+    @keyframes rotate {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
     }
 </style>
 

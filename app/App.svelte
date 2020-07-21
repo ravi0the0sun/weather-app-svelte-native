@@ -7,18 +7,23 @@
         latitude,
         unitSystem,
         currentweather,
-        loading
+        loading, 
+        error
     } from './stores';
-    import { getWeather } from './api';
+    import { getWeather } from './api'; 
 
     import WeatherInfo from './components/WeatherInfo.svelte';
     import ActionBar from './components/ActionBar.svelte';
+    import ErrorBlock from './components/ErrorBlock.svelte'
+    import WeatherDetails from './components/WeatherDetails.svelte';
+    import WeatherCard from './components/WeatherCard.svelte'
 
     async function getLocation() {
         try {
             const request = await GeoLocation.enableLocationRequest(true);
             const response = await GeoLocation.isEnabled();
             if (!response) {
+                $error = true;
                 throw Error();
             }
             const location = await GeoLocation.getCurrentLocation({});
@@ -35,16 +40,20 @@
 </script>
 
 <page class="main">
-    <ActionBar getWeather ={getWeather}/>
-    <gridLayout col="auto" row="auto" horizontalAlignment="center" verticalAlignment="center" textWrap="true">
+    <ActionBar getWeather={getWeather}/>
+    <stackLayout orientation="vertical" horizontalAlignment="center" verticalAlignment="center" textWrap="true">
         {#if !$loading}
-            <WeatherInfo col="0" row="0" />
+            <WeatherInfo />
+            <WeatherCard />
+            <!--<WeatherDetails />-->
+        {:else if ($error)}
+            <ErrorBlock />
         {:else}
             <activityIndicator 
                 busy="{$loading}" color="#ffffff" width="100" height="100" col="0" row="0" >
             </activityIndicator>
         {/if}
-    </gridLayout>
+    </stackLayout>
 </page>
 
 <style>
@@ -52,18 +61,6 @@
         font-size: 20px;
         color: #ffffff;
         background-image: linear-gradient(to bottom right, #0077ff, #19ffec);
-        background-size: 1100% 1100%;
     }
     
-    @keyframes gradient {
-	0% {
-		background-position: 0% 50%;
-	}
-	50% {
-		background-position: 100% 50%;
-	}
-	100% {
-		background-position: 0% 50%;
-	}
-}
 </style>
