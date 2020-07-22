@@ -54,7 +54,7 @@
         {:else}
             <stackLayout orientation="vertical" textWrap="true" horizontalAlignment="center" verticalAlignment="center" >
                 <activityIndicator 
-                    busy="{$loading}" color="#ffffff" width="100" height="100" col="0" row="0"  >
+                    busy="{$loading}" color="#ffffff" width="50" height="50" col="0" row="0"  >
                 </activityIndicator>
             </stackLayout>
         {/if}

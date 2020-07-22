@@ -1,5 +1,4 @@
 <script>
-    import { currentweather } from '../stores';
     let className;
 
     export let icon;
@@ -11,7 +10,7 @@
         className = '';
         setTimeout(() => {
             className = 'view';
-        }, 1); 
+        }, 0);
     }
 </script>
 

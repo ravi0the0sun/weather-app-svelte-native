@@ -11,4 +11,5 @@ tns run android
 # or
 tns run ios
 ```
+[image of the app](./img/test.gif)
 ### DO NOT USE THIS FOR PRODUCTION AS SVELTE-NATIVE STILL HAS ITS OWN ISSUES :smile:
