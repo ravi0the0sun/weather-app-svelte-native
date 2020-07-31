@@ -5,7 +5,7 @@ export const longitude = writable(0);
 export const unitSystem = writable("metric");
 
 export const currentweather = writable({ main: {temp: 0}});
-export const error = writable(false);
+export const error: any = writable(true);
 
 
 export const loading = writable(true);

@@ -1,5 +1,5 @@
-import { error } from './stores';
-import { API_KEY } from '../environment';
+import { error } from '../stores';
+import { API_KEY } from '../../environment';
     
 const BASE_URL_ADDRESS = 'https://api.openweathermap.org/data/2.5/weather?';
 
@@ -8,7 +8,7 @@ export async function getWeather( latitude, longitude, unitSystem ) {
     .then(res => res.json())
     .then(data => data)
     .catch(err => {
-        console.log(err);
-        error.set = err;
+        error.set = false;
+        console.error(err);
     });
 }

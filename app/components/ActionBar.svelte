@@ -9,10 +9,10 @@
         error 
     } from '../stores';
 
-    import { getWeather } from '../api';
+    import { getWeather } from '../api/api';
 
     async function changeUnit() {
-        if ($unitSystem == 'metric') {
+        if ($unitSystem === 'metric') {
             $unitSystem = 'imperial';
             await reload();
         } else {
@@ -25,7 +25,7 @@
     }
     async function reload() {
         $loading = true;
-        $error = false;
+        $error = true;
         $currentweather = await getWeather($latitude, $longitude, $unitSystem);
         $loading = false;
     }

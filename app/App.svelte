@@ -10,20 +10,20 @@
         loading, 
         error
     } from './stores';
-    import { getWeather } from './api'; 
+    import { getWeather } from './api/api'; 
 
     import WeatherInfo from './components/WeatherInfo.svelte';
     import ActionBar from './components/ActionBar.svelte';
-    import ErrorBlock from './components/ErrorBlock.svelte'
+    import ErrorBlock from './components/ErrorBlock.svelte';
     import WeatherDetails from './components/WeatherDetails.svelte';
-    import WeatherCard from './components/WeatherCard.svelte'
+    import WeatherCard from './components/WeatherCard.svelte';
 
     async function getLocation() {
         try {
             const request = await GeoLocation.enableLocationRequest(true);
             const response = await GeoLocation.isEnabled();
             if (!response) {
-                $error = true;
+                $error = false;
                 throw Error();
             }
             const location = await GeoLocation.getCurrentLocation({});
@@ -47,7 +47,7 @@
                 <WeatherInfo />
                 <WeatherDetails />
             </stackLayout>
-        {:else if ($error)}
+        {:else if !$error}
         <stackLayout orientation="vertical" textWrap="true" horizontalAlignment="center" verticalAlignment="center" >
             <ErrorBlock />
         </stackLayout>

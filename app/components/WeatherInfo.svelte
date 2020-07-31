@@ -22,7 +22,7 @@
 
     <WeatherIcon col="0" row="1" />
 
-    <label col="0" row="2" class="weather-temp" text="{temp}°{$unitSystem==='metric'? 'C' : 'F'}" />
+    <label col="0" row="2" class="weather-temp" text="{temp}°{$unitSystem === 'metric'? 'C' : 'F'}" />
 
     <label col="0" row="3" class="weather-des" text="{description}"/>
 

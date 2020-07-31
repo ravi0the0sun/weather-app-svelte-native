@@ -27,15 +27,15 @@
     } else if (id < 800) {
         iconUnicode = '\uf75f';
     } else if (id === 800) {
-        if (icon == '01d') {
+        if (icon === '01d') {
             iconUnicode = '\uf185';
         } else {
             iconUnicode = '\uf186';
         }
     } else if (id < 900) {
-        if (icon == '02d') {
+        if (icon === '02d') {
             iconUnicode = '\uf6c4';
-        } else if (icon == '02n') {
+        } else if (icon === '02n') {
             iconUnicode = '\uf6c3';
         } else {
             iconUnicode = '\uf0c2';

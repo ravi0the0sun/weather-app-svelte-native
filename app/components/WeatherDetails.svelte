@@ -3,8 +3,8 @@
     import WeatherCard from './WeatherCard.svelte'
 
     const { main: { feels_like, pressure, humidity, }, wind: { speed } } = $currentweather;
-    const feelsLike = `${feels_like}°${$unitSystem == 'metric' ? 'C' : 'F'}`;
-    const windSpeed = `${speed}${$unitSystem == 'metric' ? 'm/s' : 'mhp'}`;
+    const feelsLike = `${feels_like}°${$unitSystem === 'metric' ? 'C' : 'F'}`;
+    const windSpeed = `${speed}${$unitSystem === 'metric' ? 'm/s' : 'mhp'}`;
     const feeds = [
         { icon: '\uf2c9', heading: 'Feels Like', data: feelsLike, location: {col: 0, row: 0} },
         { icon: '\uf3fd', heading: 'Pressure', data: `${pressure}hPa`, location: {col: 0, row: 1} },
