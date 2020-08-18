@@ -11,7 +11,7 @@
 
 </script>
 
-<gridLayout columns="*" rows="auto,auto,auto,auto,auto" class="weather-info">
+<gridLayout columns="auto" rows="auto,auto,auto,auto,auto" class="weather-info" horizontalAlignment="center" verticalAlignment="center">
 
     <label class="weather-name" >
         <formattedString>
@@ -33,8 +33,8 @@
 
 <style>
     .weather-info {
-        padding-top: 490px;
-        padding-bottom: 260px;
+        padding-top: 410px;
+        padding-bottom: 170px;
         text-align: center;
         font-size: 20px;
         text-transform: capitalize;

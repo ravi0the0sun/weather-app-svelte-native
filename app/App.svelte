@@ -1,7 +1,5 @@
 <script>
     import { onMount } from 'svelte';
-    import * as GeoLocation from 'nativescript-geolocation';
-    import { Accuracy } from "tns-core-modules/ui/enums";
     import { 
         longitude,
         latitude,
@@ -11,6 +9,7 @@
         error
     } from './stores';
     import { getWeather } from './api/api'; 
+    import * as GeoLocation from 'nativescript-geolocation';
 
     import WeatherInfo from './components/WeatherInfo.svelte';
     import ActionBar from './components/ActionBar.svelte';
@@ -20,21 +19,23 @@
 
     async function getLocation() {
         try {
-            const request = await GeoLocation.enableLocationRequest(true);
+            GeoLocation.enableLocationRequest(true).catch((err) => {
+                throw new Error('Location Access Denied');
+            });
             const response = await GeoLocation.isEnabled();
             if (!response) {
-                $error = false;
-                throw Error();
+                throw new Error('Location Access Denied');
             }
             const location = await GeoLocation.getCurrentLocation({});
-            $longitude = location.longitude;
-            $latitude = location.latitude; 
+            $longitude = location.longitude || 0;
+            $latitude = location.latitude || 0; 
             $currentweather = await getWeather($latitude, $longitude, $unitSystem);
             $loading = false;
         } catch (err) {
-            console.log(err);
+            $error = err.message;
         }
     }
+
 
     onMount(getLocation);
 </script>
@@ -47,14 +48,14 @@
                 <WeatherInfo />
                 <WeatherDetails />
             </stackLayout>
-        {:else if !$error}
+        {:else if $error}
         <stackLayout orientation="vertical" textWrap="true" horizontalAlignment="center" verticalAlignment="center" >
             <ErrorBlock />
         </stackLayout>
         {:else}
             <stackLayout orientation="vertical" textWrap="true" horizontalAlignment="center" verticalAlignment="center" >
                 <activityIndicator 
-                    busy="{$loading}" color="#ffffff" width="50" height="50" col="0" row="0"  >
+                    busy={$loading} color="#ffffff" width="50" height="50" col="0" row="0"  >
                 </activityIndicator>
             </stackLayout>
         {/if}

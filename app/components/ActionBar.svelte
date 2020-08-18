@@ -24,10 +24,15 @@
         }
     }
     async function reload() {
-        $loading = true;
-        $error = true;
-        $currentweather = await getWeather($latitude, $longitude, $unitSystem);
-        $loading = false;
+        try {
+            $loading = true;
+            $error = null;
+            $currentweather = await getWeather($latitude, $longitude, $unitSystem);
+            $loading = false;
+        } 
+        catch(err) {
+            $error = err.message;
+        }
     }
 </script>
 
@@ -38,7 +43,7 @@
 
 <style>
     .icon {
-        font-size: 7px;
+        font-size: 8px;
     }
     .action-bar {
         color: #ffffff;

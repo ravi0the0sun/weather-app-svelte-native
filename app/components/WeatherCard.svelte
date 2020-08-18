@@ -30,7 +30,7 @@
     .icon {
         margin-top: 30px;
         margin-bottom: 20px;
-        font-size: 30px;
+        font-size: 28px;
     }
     .heading {
         font-weight: 500;
