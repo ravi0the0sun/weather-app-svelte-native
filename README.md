@@ -12,4 +12,9 @@ tns run android
 tns run ios
 ```
 ![image of the app](https://raw.githubusercontent.com/ravi0the0sun/weather-app-svelte-native/master/img/test.gif)
+
+### Note:
+
+The new nativescript V7 creates build errors, I will be fixing them soon. 
+
 ### DO NOT USE THIS FOR PRODUCTION AS SVELTE-NATIVE STILL HAS ITS OWN ISSUES :smile:
